@@ -1,13 +1,37 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  data,
+  Route,
+  RouterProvider,
+} from "react-router-dom";
+import "./index.css";
+import "./styles/tailwind.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { Layout } from "./AllPages.jsx";
+import Error from "./error/Error.jsx";
+import Home from "./layout/Home.jsx";
+import { ThemeContextProvider } from "./AllPages.jsx";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const routesEle = (
+  <Route path="/" element={<Layout />} errorElement={<Error />}>
+    <Route path="" element={<Home />}></Route>
+  </Route>
+);
+const routesFromElement = createRoutesFromElements(routesEle);
+
+const browserRouter = createBrowserRouter(routesFromElement);
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <ThemeContextProvider>
+      <RouterProvider router={browserRouter}>
+        <App />
+      </RouterProvider>
+    </ThemeContextProvider>
   </React.StrictMode>
 );
 
