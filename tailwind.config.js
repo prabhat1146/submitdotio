@@ -10,7 +10,7 @@ module.exports = {
         accent: "var(--accent-text)",
         background: "var(--bg-color)",
         "background-primary": "var(--bg-color-primary)",
-        "background-secondry": "var(--bg-color-secondry)",
+        "background-secondry": "var(--bg-color-secondary)",
       },
     },
   },

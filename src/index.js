@@ -14,7 +14,7 @@ import reportWebVitals from "./reportWebVitals";
 import { Layout } from "./AllPages.jsx";
 import Error from "./error/Error.jsx";
 import Home from "./layout/Home.jsx";
-import { ThemeContextProvider } from "./AllPages.jsx";
+import { ThemeContextProvider, SideBarContextProvider } from "./AllPages.jsx";
 
 const routesEle = (
   <Route path="/" element={<Layout />} errorElement={<Error />}>
@@ -27,11 +27,13 @@ const browserRouter = createBrowserRouter(routesFromElement);
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <ThemeContextProvider>
-      <RouterProvider router={browserRouter}>
-        <App />
-      </RouterProvider>
-    </ThemeContextProvider>
+    <SideBarContextProvider>
+      <ThemeContextProvider>
+        <RouterProvider router={browserRouter}>
+          <App />
+        </RouterProvider>
+      </ThemeContextProvider>
+    </SideBarContextProvider>
   </React.StrictMode>
 );
 

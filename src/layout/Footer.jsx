@@ -9,7 +9,7 @@ const Footer = () => {
     <footer
       className={`${
         theme === "light" ? "bg-background text-primary" : "bg-background-primary text-primary"
-      } py-8 mt-8`}
+      } py-8`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center justify-between space-y-4 sm:flex-row sm:space-y-0">

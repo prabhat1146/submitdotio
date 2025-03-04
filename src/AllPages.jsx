@@ -1,17 +1,14 @@
 import Layout from "./layout/Layout";
 
 import { ThemeContextProvider } from "./context/ThemeContextProvider";
+import SideBarContextProvider from "./context/SideBarContextProvider";
 
-import React from 'react';
+import React from "react";
 
 const AllPages = () => {
-    return (
-        <div>
-            
-        </div>
-    );
+  return <div></div>;
 };
 
-export {Layout,ThemeContextProvider};
+export { Layout, ThemeContextProvider, SideBarContextProvider };
 
 export default AllPages;
