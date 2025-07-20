@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import {
+  BrowserRouter,
   createBrowserRouter,
   createRoutesFromElements,
   data,
@@ -29,9 +30,12 @@ root.render(
   <React.StrictMode>
     <SideBarContextProvider>
       <ThemeContextProvider>
-        <RouterProvider router={browserRouter}>
+        {/* <RouterProvider router={browserRouter}>
           <App />
-        </RouterProvider>
+        </RouterProvider> */}
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
       </ThemeContextProvider>
     </SideBarContextProvider>
   </React.StrictMode>

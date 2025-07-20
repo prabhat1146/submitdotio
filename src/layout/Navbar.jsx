@@ -1,15 +1,37 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { useThemeContext } from "../context/ThemeContextProvider";
 import { Moon, Sun, Menu, X } from "lucide-react";
 import { useSidebarContext } from "../context/SideBarContextProvider";
+import { useLocation } from "react-router-dom";
 
 const Navbar = () => {
   const { theme, toggleTheme } = useThemeContext();
   const {isSidebarOpen,setIsSidebarOpen}=useSidebarContext();
 
+  const [scrolled, setScrolled] = useState(false);
+
+  const location=useLocation();
+
+  useEffect(() => {
+  const handleScroll = () => {
+    if (window.scrollY > 620 || location.pathname!=='/') {
+      setScrolled(true);
+    } else {
+      setScrolled(false);
+    }
+
+  
+  };
+
+  window.addEventListener("scroll", handleScroll);
+  return () => window.removeEventListener("scroll", handleScroll);
+}, [location.pathname]);
+
   return (
-    <nav data-theme={theme} className="bg-background text-primary shadow-md">
+    <nav data-theme={theme} className={`fixed w-full top-0 z-50 transition-all duration-300 text-blue-500 ${
+    scrolled ? "bg-blue-900 shadow-md text-white" : "bg-transparent text-black"
+  }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           <div className="flex flex-row items-center">
