@@ -59,12 +59,12 @@ const Navbar = () => {
             <a href="/contact" className="hover:text-accent">
               Contact
             </a>
-            <button
+            {/* <button
               onClick={toggleTheme}
               className="p-2 rounded-full bg-background-primary transition"
             >
               {theme === "light" ? <Moon size={20} /> : <Sun size={20} />}
-            </button>
+            </button> */}
           </div>
         </div>
       </div>
