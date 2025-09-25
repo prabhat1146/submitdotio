@@ -42,7 +42,7 @@ const Login = () => {
         })
         .catch((err) => {
           console.log(err);
-          alert(err.response.error || "Server error");
+          alert(err?.response?.error || "Server error");
         })
         .finally((final) => {
           setLoading(false);
