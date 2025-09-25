@@ -16,6 +16,7 @@ import { Layout } from "./AllPages.jsx";
 import Error from "./error/Error.jsx";
 import Home from "./layout/Home.jsx";
 import { ThemeContextProvider, SideBarContextProvider } from "./AllPages.jsx";
+import AuthContextProvider from "./context/AuthContextProvider.jsx";
 
 const routesEle = (
   <Route path="/" element={<Layout />} errorElement={<Error />}>
@@ -33,9 +34,11 @@ root.render(
         {/* <RouterProvider router={browserRouter}>
           <App />
         </RouterProvider> */}
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
+        <AuthContextProvider>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </AuthContextProvider>
       </ThemeContextProvider>
     </SideBarContextProvider>
   </React.StrictMode>
