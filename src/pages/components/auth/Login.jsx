@@ -5,7 +5,7 @@ import ApiClient from "../../../utility/api/ApiClient";
 import FullScreenLoader from "../FullScreenLoader";
 
 const Login = () => {
-  const { login, setAction, userType,} = useUserAuthContext();
+  const { login, setAction, userType } = useUserAuthContext();
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -30,11 +30,12 @@ const Login = () => {
       console.log("Login data:", formData);
       ApiClient.postJson(subUrl, payload)
         .then((res) => {
-          console.log(res);
+          console.log(res.data);
           if (res.status >= 200 && res.status < 300) {
             alert(res?.statusText || "Login Success");
             // setIsAuthenticated(true);
-            login(res?.data);
+            //send auth token only
+            login(res?.data.data);
             navigate("/pages/user/in/dashboard");
           } else {
             alert(res?.statusText || "Something went wrong.");
@@ -48,6 +49,31 @@ const Login = () => {
           setLoading(false);
         });
     } else if (userType === "upload-user") {
+    } else if (userType === "admin") {
+      setLoading(true);
+      const subUrl = `/u/admin/login`;
+      const payload = formData;
+      console.log("Login data:", formData);
+      ApiClient.postJson(subUrl, payload)
+        .then((res) => {
+          console.log(res.data);
+          if (res.status >= 200 && res.status < 300) {
+            alert(res?.statusText || "Login Success");
+            // setIsAuthenticated(true);
+            //send auth token only
+            login(res?.data.data);
+            navigate("/pages/user/in/dashboard/admin");
+          } else {
+            alert(res?.statusText || "Something went wrong.");
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+          alert(err?.response?.error || "Server error");
+        })
+        .finally((final) => {
+          setLoading(false);
+        });
     }
   };
 

@@ -39,6 +39,14 @@ const UserTypeRoute = ({ onNext }) => {
           <label className="flex items-center space-x-2">
             <input
               type="checkbox"
+              checked={selectedUser === "admin"}
+              onChange={() => handleCheckboxChange("admin")}
+            />
+            <span>Admin</span>
+          </label>
+          <label className="flex items-center space-x-2">
+            <input
+              type="checkbox"
               checked={selectedUser === "apply-user"}
               onChange={() => handleCheckboxChange("apply-user")}
             />

@@ -14,6 +14,7 @@ import VerifyEmailWithOTP from "./pages/components/auth/VerifyEmailWithOTP";
 import Dashboard from "./pages/users/DashBoard";
 import ProtectedRoute from "./pages/components/auth/ProtectedRoute";
 import LogoutPage from "./pages/components/auth/LogoutPage";
+import AdminDashboard from "./pages/users/admin/AdminDashboard";
 
 function App() {
   return (
@@ -47,6 +48,9 @@ function App() {
             <Route path="in" element={<Outlet />}>
               <Route element={<ProtectedRoute />}>
                 <Route path="dashboard" element={<Dashboard />} />
+                <Route path="dashboard" element={<Outlet />}>
+                  <Route path="admin" element={<AdminDashboard />}></Route>
+                </Route>
               </Route>
             </Route>
           </Route>
